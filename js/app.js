@@ -13,6 +13,11 @@
  * 
 */
 
+/**
+ * Comments should be present at the beginning of each procedure and class.
+ * Great to have comments before crucial code sections within the procedure.
+*/
+
 class Navbar {
     constructor () {
         this.navbar = document.querySelector(".navbar__menu");
@@ -90,9 +95,7 @@ class Navbar {
     }
 
     highlightActiveLink ( id ) {
-
        let target_link = this.nav_links[id];
-
        this.active_link.classList.remove('active-link');
        target_link.classList.add('active-link');
        this.active_link = target_link;
@@ -123,10 +126,7 @@ class Navbar {
 
 new Navbar();
 
-/**
- * Comments should be present at the beginning of each procedure and class.
- * Great to have comments before crucial code sections within the procedure.
-*/
+
 
 /**
  * Define Global Variables
