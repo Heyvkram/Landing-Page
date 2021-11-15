@@ -92,11 +92,12 @@ class Navbar {
     }
 
     // Function to highlight the menu item and the section if it's in the viewport
-    scrollEvent (e) {
+    scrollEvent () {
         this.sections_array.forEach(section => {
-            if (this.inViewport(section)) {
+            const box = section.getBoundingClientRect();             
+            if (box.top <= 150 && box.bottom >= 150) {
                 this.highlightActiveLink(section.id);
-                this.highlightActiveSection(section);   
+                this.highlightActiveSection(section); 
             }
         });
     }
@@ -106,8 +107,7 @@ class Navbar {
        let target_link = this.nav_links[id];
        this.active_link.classList.remove('active-link');
        target_link.classList.add('active-link');
-       this.active_link = target_link;
-                       
+       this.active_link = target_link;                       
     }
     
     // Function to highlight the current active section 
@@ -119,21 +119,11 @@ class Navbar {
 
     // Add class 'active' to section when near top of viewport
     addListeners() {
-        document.addEventListener('scroll', (e)=> { this.scrollEvent(e) } );
+        document.addEventListener('scroll', (e)=> { this.scrollEvent() } );
     }
 
-    //Determine if an element is in the viewport
-    inViewport(section) {
-        let size = section.getBoundingClientRect();
-        return (
-            size.top >= 0 &&
-            size.left >= 0 &&
-            size.bottom <= window.innerHeight &&
-            size.right <= window.innerWidth
-        );
-    }
-
+   
 }
 
-//call the function to create the Navbar.
+//call the function to run an instance of Navbar.
 new Navbar();
